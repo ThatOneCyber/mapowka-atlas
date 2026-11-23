@@ -17,7 +17,7 @@ Otwórz `dist/index.html` lub uruchom `python -m http.server 8000 --directory di
 
 ## Publikacja
 
-GitHub Pages: Settings → Pages → Deploy from a branch → main → /docs. Katalog `docs/` jest kopią gotowej strony z `dist/`; po zmianach zsynchronizuj te katalogi.
+GitHub Pages: Settings → Pages → Deploy from a branch → Public → /docs. Katalog `docs/` jest kopią gotowej strony z `dist/`; po zmianach zsynchronizuj te katalogi.
 
 Strona zawiera `noindex`, aby wyszukiwarki respektujące tę regułę nie indeksowały jej. Strona i repozytorium pozostają publiczne; to nie jest kontrola dostępu.
 
