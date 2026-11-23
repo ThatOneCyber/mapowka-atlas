@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pl" data-theme="orange">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#151b23"><meta name="description" content="Nauka regionów świata. Mapa, ćwiczenia i sprawdzian.">
+<title>Mapówka Atlas</title>
+<link rel="stylesheet" href="vendor/leaflet.css"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+ <div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><ellipse cx="16" cy="16" rx="5" ry="12"/><path d="M4 16h24M7 9h18M7 23h18"/></svg><h1>Mapówka <span>Atlas</span></h1></div>
+ <nav aria-label="Tryb"><button data-mode="learn" aria-pressed="true">Mapa</button><button data-mode="practice" aria-pressed="false">Ćwiczenia</button><button data-mode="exam" aria-pressed="false">Sprawdzian</button></nav>
+ <div class="header-tools"><span class="creator">Made by <b>Tomek</b></span><button id="theme" class="theme" aria-label="Zmień motyw na fioletowy" title="Zmień motyw"><span></span>Motyw</button><button id="sidebar-toggle" class="mobile-only" aria-expanded="false" aria-controls="sidebar">Warstwy</button></div>
+</header>
+<div class="workspace">
+ <aside id="sidebar">
+  <div class="side-heading"><h2>Warstwy</h2><span id="total-count" class="quiet"></span></div>
+  <div id="categories"></div>
+  <div class="selection-tools"><button id="select-all" class="text-button">Wszystkie</button><span>·</span><button id="select-none" class="text-button">Żadna</button></div>
+  <div class="practice-format"><label class="format-choice"><span><strong>Dopasuj nazwy</strong><small>Widoczne zarysy</small></span><input id="show-outlines" type="checkbox" role="switch" aria-label="Dopasuj nazwy"></label></div>
+  <div class="side-divider"></div>
+  <div class="map-options"><label class="option"><input id="show-labels" type="checkbox"><span>Nazwy na mapie</span></label><label class="option"><input id="show-buffer" type="checkbox"><span>Strefa tolerancji <b>+20%</b></span></label><label class="option"><input id="show-borders" type="checkbox" checked><span>Granice państw</span></label></div>
+  <div id="catalog" class="catalog"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Znajdź region…" aria-label="Szukaj regionu"></label><div id="region-list" class="region-list"></div></div>
+  <div class="side-bottom"><details><summary>O mapie i danych</summary><p>Silnik Leaflet. Obrysy Natural Earth 1:10m, w tym linie brzegowe wysp. 13 obrysów autorskich wymaga porównania z atlasem szkolnym. Granice regionów fizycznych są umowne.</p><p>Strefa tolerancji to bufor na zewnątrz obrysu, zwiększający jego powierzchnię o 20%. Działa niezależnie od przybliżenia i jest ukryta na sprawdzianie.</p><p>Wyniki i ustawienia są zapisywane tylko w tej przeglądarce.</p></details><div class="side-footer"><span>111 regionów</span><a href="https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-physical-labels/" target="_blank" rel="noreferrer">Natural Earth</a></div></div>
+ </aside>
+ <main>
+  <section class="task-bar" aria-live="polite"><div class="task-copy"><span class="mode-caption" id="mode-caption">Mapa do nauki</span><div class="task-title"><h2 id="task-title">Mapa świata</h2><span id="task-category" class="category-badge" hidden></span></div><div id="task-meta" class="task-meta"></div></div><div class="task-actions"><button id="session-start" class="primary">Rozpocznij ćwiczenia</button><button id="session-end" class="secondary" hidden>Zakończ sesję</button></div></section>
+  <div id="progress-track" class="progress-track" role="progressbar" aria-label="Postęp sesji" aria-valuemin="0" aria-valuemax="111" aria-valuenow="0" hidden><div id="progress-fill"></div></div>
+  <div class="map-frame"><div id="map" role="application" aria-label="Mapa świata. Strzałki przesuwają mapę; plus i minus zmieniają przybliżenie." tabindex="0"></div><div class="map-toolbar"><button id="world-view" title="Pokaż cały świat">Cały świat</button><div class="zoom-buttons"><button id="zoom-in" aria-label="Przybliż">+</button><button id="zoom-out" aria-label="Oddal">−</button></div></div><div id="loading" class="loading">Przygotowuję mapę…</div>
+   <section id="results" class="result-panel" hidden aria-labelledby="result-title"><div class="result-heading"><span class="mode-caption">Sesja zakończona</span><h2 id="result-title"></h2><p id="result-description"></p></div><div id="result-list" class="result-list"></div><div class="result-actions"><button id="repeat-errors" class="primary">Powtórz błędy</button><button id="restart" class="secondary">Nowa sesja</button><button id="back-to-map" class="text-button">Wróć do mapy</button></div></section>
+  </div>
+  <section class="answer-bar" aria-live="polite"><div id="answer-copy"><strong id="answer-title"></strong><span id="answer-detail"></span></div><div class="answer-actions"><button id="skip" class="text-button" hidden>Nie wiem</button><button id="next" class="primary" hidden>Dalej</button><button id="close-detail" class="text-button" hidden>Zamknij</button></div></section>
+ </main>
+</div>
+<script src="vendor/leaflet.js"></script><script src="data.js"></script><script src="geometry.js"></script><script src="coast.js"></script><script src="world.js"></script><script src="display.js"></script><script src="core.js"></script><script src="app.js"></script>
+</body></html>
